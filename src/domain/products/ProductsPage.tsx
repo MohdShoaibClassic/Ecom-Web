@@ -7,26 +7,13 @@ import { useEffect } from "react";
 const ProductsPage: React.FunctionComponent = () => {
   const { products: products, loading } = useAppSelector(productsSelector);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(getProducts());
   }, []);
 
   const renderContent = () => {
-    if (loading === "loaded") {
-      return (
-        <>
-          <h2 className="text-3xl text-center font-medium">
-            New Products Arrivals
-          </h2>
-          <div className="flex justify-between flex-wrap mt-6">
-            {products &&
-              products?.map((product: Product) => (
-                <ProductCard {...product} key={product.id} />
-              ))}
-          </div>
-        </>
-      );
-    } else if (loading === "loading") {
+    if (loading === "loading") {
       return (
         <div className="flex items-center justify-center">
           <div
@@ -39,10 +26,27 @@ const ProductsPage: React.FunctionComponent = () => {
           </div>
         </div>
       );
-    } else {
+    }
+
+    if (loading === "error") {
       return <p>Unexpected error occured...</p>;
     }
+
+    return (
+      <>
+        <h2 className="text-3xl text-center font-medium">
+          New Products Arrivals
+        </h2>
+        <div className="flex justify-between flex-wrap mt-6">
+          {products &&
+            products?.map((product: Product) => (
+              <ProductCard {...product} key={product.id} />
+            ))}
+        </div>
+      </>
+    );
   };
+
   return <div className="py-8 px-4">{renderContent()}</div>;
 };
 

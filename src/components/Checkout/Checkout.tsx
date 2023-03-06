@@ -10,7 +10,7 @@ import {
 import { CartItem, CartState } from "../../domain/cart/types";
 import { useAppDispatch, useAppSelector } from "../../store.hooks";
 
-const Checkout = () => {
+export const Checkout = () => {
   const [state, setState] = useState({
     email: "",
     firstName: "",
@@ -28,6 +28,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const cart: CartState = useAppSelector(cartSelector);
+
   const handleInputChange = (event: {
     target: HTMLInputElement | HTMLSelectElement;
   }) => {
@@ -37,6 +38,7 @@ const Checkout = () => {
       [name]: value,
     }));
   };
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     navigate("/orderplaced", {
@@ -50,11 +52,13 @@ const Checkout = () => {
   const handleRemoveFromCart = (cartItem: CartItem) => {
     dispatch(removeFromCart(cartItem));
   };
+
   const subTotal = useAppSelector(totalAmountSelector);
   const totalAmount = parseInt(subTotal);
   const shipping = 5.0;
   const taxes = 5.52;
   const total = (totalAmount + shipping + taxes).toFixed(2);
+
   return (
     <div className="flex m-8 bg-gray-200 border rounded-lg  ">
       <div className="my-8 mx-auto  p-6  w-fit">
@@ -286,4 +290,3 @@ const Checkout = () => {
     </div>
   );
 };
-export default Checkout;

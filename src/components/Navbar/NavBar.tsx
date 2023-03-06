@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { totalItemsCount } from "../../domain/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../store.hooks";
-const NavBar = (): JSX.Element => {
+
+export const NavBar = (): JSX.Element => {
   const totalCount = useAppSelector(totalItemsCount);
+
   return (
     <nav className="flex items-center bg-gray-500 justify-between p-4 text-3xl">
       <NavLink className="text-white" to="/">
@@ -41,5 +43,3 @@ const NavBar = (): JSX.Element => {
     </nav>
   );
 };
-
-export default NavBar;

@@ -4,13 +4,15 @@ import { Product } from "../../domain/products/types";
 import { addToCart } from "../../domain/cart/cartSlice";
 import { useAppDispatch } from "../../store.hooks";
 
-const ProductDetails = (): JSX.Element => {
+export const ProductDetails = (): JSX.Element => {
   const location = useLocation();
   const { product } = location.state;
   const dispatch = useAppDispatch();
+
   const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product));
   };
+
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl  m-10 p-10">
       <figure>
@@ -32,4 +34,3 @@ const ProductDetails = (): JSX.Element => {
     </div>
   );
 };
-export default ProductDetails;

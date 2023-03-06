@@ -10,9 +10,11 @@ type ProductProps = Product;
 
 export const ProductCard = (product: ProductProps): JSX.Element => {
   const dispatch = useAppDispatch();
+
   const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product));
   };
+  
   return (
     <div
       key={product.id}

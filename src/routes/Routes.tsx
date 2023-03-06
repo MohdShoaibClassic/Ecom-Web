@@ -1,7 +1,7 @@
 import { Route, Routes as Switch } from "react-router-dom";
-import Checkout from "../components/Checkout/Checkout";
-import OrderPlacedSuccessful from "../components/OrderPlaced/OrderPlacedSuccessful";
-import ProductDetails from "../components/ProductDetails/ProductDetails";
+import { Checkout } from "../components/Checkout";
+import { OrderPlacedSuccessful } from "../components/OrderPlaced/OrderPlacedSuccessful";
+import { ProductDetails } from "../components/ProductDetails/ProductDetails";
 import CartPage from "../domain/cart/CartPage";
 import ProductsPage from "../domain/products/ProductsPage";
 

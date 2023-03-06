@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { totalAmountSelector } from "../../domain/cart/cartSlice";
 import { useAppSelector } from "../../store.hooks";
 
-const OrderPlacedSuccessful = (): JSX.Element => {
+export const OrderPlacedSuccessful = (): JSX.Element => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const totalAmount = useAppSelector(totalAmountSelector);
@@ -41,4 +41,3 @@ const OrderPlacedSuccessful = (): JSX.Element => {
     </div>
   );
 };
-export default OrderPlacedSuccessful;
